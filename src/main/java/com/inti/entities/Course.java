@@ -31,24 +31,17 @@ public class Course implements Serializable {
 	private float noteChauffeur;
 	private float tempsCourse;
 	private float prixReel;
-	/*
-	 * @Embedded private Adresse adresseDepart;
-	 * 
-	 * @Embedded private Adresse adresseArrivee;
-	 */
 
 	@Embedded
-	@AttributeOverrides({ 
-			@AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
+	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseDepart_codePostal")),
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseDepart_ville")) })
 	private Adresse adresseDepart;
 
 	@Embedded
-	@AttributeOverrides({ 
-		@AttributeOverride(name = "rue", column = @Column(name = "adresseArrivee_rue")),
-		@AttributeOverride(name = "codePostal", column = @Column(name = "adresseArrivee_codePostal")),
-		@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
+	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseArrivee_rue")),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseArrivee_codePostal")),
+			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
 	private Adresse adresseArrivee;
 
 	// @OneToOne(mappedBy="courseFK")
@@ -148,7 +141,6 @@ public class Course implements Serializable {
 	public void setAdresseArrivee(Adresse adresseArrivee) {
 		this.adresseArrivee = adresseArrivee;
 	}
-	
 
 	@Override
 	public String toString() {

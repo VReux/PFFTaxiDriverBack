@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
-import com.inti.models.Adresse;
+import com.inti.model.Adresse;
 
 @Entity
 @Table(name = "RESERVATIONS", schema = "taxi_driver_db")
