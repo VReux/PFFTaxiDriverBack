@@ -23,7 +23,7 @@ public class Client extends Utilisateur{
 
 		//Associations
 		
-	/*	@OneToMany(mappedBy="client")
+		@OneToMany(mappedBy="client")
 		private List<Reclamation> reclamations= new ArrayList<>();
 		
 		
@@ -34,9 +34,9 @@ public class Client extends Utilisateur{
 		public void setReclamations(List<Reclamation> reclamations) {
 			this.reclamations = reclamations;
 		}
-	*/
+	
 		
-	/*	@OneToMany(mappedBy="client")
+		@OneToMany(mappedBy="client")
 		private List<Reservation> reservations= new ArrayList<>();
 		
 		
@@ -47,7 +47,7 @@ public class Client extends Utilisateur{
 		public void setReservations(List<Reservation> reservations) {
 			this.reservations = reservations;
 		}
-		*/
+		
 		
 
 		public Client() {

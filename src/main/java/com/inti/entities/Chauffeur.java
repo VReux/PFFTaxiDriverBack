@@ -12,83 +12,67 @@ import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("Chauffeur")
-public class Chauffeur extends Utilisateur{
+public class Chauffeur extends Utilisateur {
 
-		private String numPermis;
+	private String numPermis;
 
-		public String getNumPermis() {
-			return numPermis;
-		}
+	public String getNumPermis() {
+		return numPermis;
+	}
 
-		public void setNumPermis(String numPermis) {
-			this.numPermis = numPermis;
-		}
+	public void setNumPermis(String numPermis) {
+		this.numPermis = numPermis;
+	}
 
-		
-		//Associations
-		
-		/*
-		@OneToOne
-		@JoinColumn(name="id_taxi")
-		private Taxi taxi;
-		
-		public Taxi getTaxi() {
-			return taxi;
-		}
+	// Associations
 
-		public void setTaxi(Taxi taxi) {
-			this.taxi = taxi;
-		}*/
-		
-		
-		
-		/*
-		@ManyToOne
-		@JoinColumn(name="Agence")
-		private Agence agence;
-		
-		public Agence getAgence() {
-			return agence;
-		}
+	@OneToOne
+	@JoinColumn(name = "id_taxi")
+	private Taxi taxi;
 
-		public void setAgence(Agence agence) {
-			this.agence = agence;
-		}
-		*/
-		
-		
-		
-		/*
-		@OneToMany(mappedBy="Chauffeur")
-		private List<Course> courses=new ArrayList<>();
+	public Taxi getTaxi() {
+		return taxi;
+	}
 
+	public void setTaxi(Taxi taxi) {
+		this.taxi = taxi;
+	}
 
-		public List<Course> getCourses() {
-			return courses;
-		}
+	@ManyToOne
+	@JoinColumn(name = "Agence")
+	private Agence agence;
 
-		public void setCourses(List<Course> courses) {
-			this.courses = courses;
-		}
-		*/
-		
-		
-		public Chauffeur() {
-			super();
-		}
-		
-		
-		public Chauffeur(String numPermis) {
-			super();
-			this.numPermis = numPermis;
-		}
-		
-		@Override
-		public String toString() {
-			return super.toString() + "Chauffeur [numPermis=" + numPermis + "]";
-		}
+	public Agence getAgence() {
+		return agence;
+	}
 
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
 
-		
-		
+	@OneToMany(mappedBy = "chauffeur")
+	private List<Course> courses = new ArrayList<>();
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
+	public Chauffeur() {
+		super();
+	}
+
+	public Chauffeur(String numPermis) {
+		super();
+		this.numPermis = numPermis;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "Chauffeur [numPermis=" + numPermis + "]";
+	}
+
 }

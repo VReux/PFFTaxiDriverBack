@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -16,12 +17,19 @@ public class Reclamation {
 	private Long idReclamation;
 	private String texte;
 
-	// @ManyToOne
-	// @JoinColumn(name="id_client")
-	// private Client client;
+	@ManyToOne
+	@JoinColumn(name = "id_client")
+	private Client client;
 
 	public Reclamation() {
+	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public Reclamation(String texte) {

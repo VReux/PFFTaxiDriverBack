@@ -18,9 +18,12 @@ public class Agence implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAgence;
+
 	private String nomAgence;
-	// @OneToMany(mappedBy = "agence")
-	// private List<Chauffeur> chauffeurs = new ArrayList<>();
+
+	@OneToMany(mappedBy = "agence")
+	private List<Chauffeur> chauffeurs = new ArrayList<>();
+
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
 	private List<Taxi> taxis = new ArrayList<>();
 
@@ -34,6 +37,14 @@ public class Agence implements Serializable {
 	public Agence(String nomAgence, List<Taxi> taxis) {
 		this.nomAgence = nomAgence;
 		this.taxis = taxis;
+	}
+
+	public List<Chauffeur> getChauffeurs() {
+		return chauffeurs;
+	}
+
+	public void setChauffeurs(List<Chauffeur> chauffeurs) {
+		this.chauffeurs = chauffeurs;
 	}
 
 	public Long getIdAgence() {
