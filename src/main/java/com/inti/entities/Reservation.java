@@ -55,13 +55,43 @@ public class Reservation implements Serializable {
 	private Client client;
 
 
+	//constructeur
+	public Reservation() {
+	}
 
+	public Reservation(Date heureDepart, float tauxHoraire, boolean validation) {
+		this.heureDepart = heureDepart;
+		this.tauxHoraire = tauxHoraire;
+		this.validation = validation;
+	}
+	
+	
+	public Reservation(Date heureDepart, float tauxHoraire, boolean validation,
+			Adresse adresseDepart, Adresse adresseArrivee, Course course, Client client) {
+		this.heureDepart = heureDepart;
+		this.tauxHoraire = tauxHoraire;
+		this.validation = validation;
+		this.adresseDepart = adresseDepart;
+		this.adresseArrivee = adresseArrivee;
+		this.course = course;
+		this.client = client;
+	}
+
+	//getters/setters
 	public Course getCourse() {
 		return course;
 	}
 
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+
+	public List<Offre> getOffres() {
+		return offres;
+	}
+
+	public void setOffres(List<Offre> offres) {
+		this.offres = offres;
 	}
 
 	public Client getClient() {
@@ -72,14 +102,7 @@ public class Reservation implements Serializable {
 		this.client = client;
 	}
 
-	public Reservation() {
-	}
-
-	public Reservation(Date heureDepart, float tauxHoraire, boolean validation) {
-		this.heureDepart = heureDepart;
-		this.tauxHoraire = tauxHoraire;
-		this.validation = validation;
-	}
+	
 
 	public Long getIdReservation() {
 		return idReservation;

@@ -35,14 +35,8 @@ public class Facture implements Serializable {
 	@JoinColumn(name = "id_course")
 	private Course course;
 
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
+	
+	//constructeurs
 	public Facture() {
 
 	}
@@ -54,6 +48,30 @@ public class Facture implements Serializable {
 		this.tva = tva;
 		this.date = date;
 	}
+	
+	
+	
+	public Facture(float tempsCourse, float prixReelHT, float prixReelTTC, float tva, Date date,
+			Course course) {
+		this.tempsCourse = tempsCourse;
+		this.prixReelHT = prixReelHT;
+		this.prixReelTTC = prixReelTTC;
+		this.tva = tva;
+		this.date = date;
+		this.course = course;
+	}
+
+	
+	//getters/setters
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+
 
 	public Long getIdFacture() {
 		return idFacture;

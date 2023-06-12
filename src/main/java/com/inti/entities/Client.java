@@ -15,6 +15,38 @@ public class Client extends Utilisateur implements Serializable {
 
 		private String email;
 
+		//Associations
+		@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE)
+		private List<Reclamation> reclamations= new ArrayList<>();
+		
+		@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE)
+		private List<Reservation> reservations= new ArrayList<>();
+
+		//constructeurs
+		public Client() {
+			super();
+		}
+
+		
+		public Client(String email) {
+			super();
+			this.email = email;
+		}
+
+
+		//getters/setters
+		
+		
+		public List<Reclamation> getReclamations() {
+			return reclamations;
+		}
+
+		public void setReclamations(List<Reclamation> reclamations) {
+			this.reclamations = reclamations;
+		}
+		
+		
+		
 		public String getEmail() {
 			return email;
 		}
@@ -22,35 +54,19 @@ public class Client extends Utilisateur implements Serializable {
 		public void setEmail(String email) {
 			this.email = email;
 		}
-
-		//Associations
-		
-		@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE)
-		private List<Reclamation> reclamations= new ArrayList<>();
 		
 		
-
-	
 		
-		@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE)
-		private List<Reservation> reservations= new ArrayList<>();
-		
-		
-
-		
-		
-
-		public Client() {
-			super();
+		public List<Reservation> getReservations() {
+			return reservations;
 		}
 
-		
-		
-		public Client(String email) {
-			super();
-			this.email = email;
+		public void setReservations(List<Reservation> reservations) {
+			this.reservations = reservations;
 		}
-
+		
+		
+		//toString
 		@Override
 		public String toString() {
 			return super.toString() + "Client [email=" + email + "]";

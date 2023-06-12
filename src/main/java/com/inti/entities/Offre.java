@@ -26,6 +26,24 @@ public class Offre implements Serializable {
 	@JoinColumn(name = "id_Reservation")
 	private Reservation reservation;
 
+	
+	
+	//constructeurs
+	public Offre() {
+	}
+
+	public Offre(String codePromo) {
+		this.codePromo = codePromo;
+	}
+	
+	
+	public Offre(String codePromo, Utilisateur utilisateur, Reservation reservation) {
+		this.codePromo = codePromo;
+		this.utilisateur = utilisateur;
+		this.reservation = reservation;
+	}
+
+	//getters/setters
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
@@ -42,12 +60,7 @@ public class Offre implements Serializable {
 		this.reservation = reservation;
 	}
 
-	public Offre() {
-	}
-
-	public Offre(String codePromo) {
-		this.codePromo = codePromo;
-	}
+	
 
 	public Long getIdOffre() {
 		return idOffre;

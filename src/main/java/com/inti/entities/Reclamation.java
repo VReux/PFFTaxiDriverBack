@@ -23,9 +23,23 @@ public class Reclamation implements Serializable {
 	@JoinColumn(name = "id_client")
 	private Client client;
 
+	
+	//constructeurs
 	public Reclamation() {
 	}
 
+	public Reclamation(String texte) {
+		this.texte = texte;
+	}
+	
+	public Reclamation(String texte, Client client) {
+		this.texte = texte;
+		this.client = client;
+	}
+
+
+
+	//getters/setters
 	public Client getClient() {
 		return client;
 	}
@@ -34,9 +48,7 @@ public class Reclamation implements Serializable {
 		this.client = client;
 	}
 
-	public Reclamation(String texte) {
-		this.texte = texte;
-	}
+
 
 	public Long getIdReclamation() {
 		return idReclamation;

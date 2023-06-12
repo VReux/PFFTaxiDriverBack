@@ -29,6 +29,25 @@ public class Taxi implements Serializable {
 	@OneToOne(mappedBy = "taxi",cascade = CascadeType.REMOVE)
 	private Chauffeur chauffeur;
 
+	//constructeurs
+	public Taxi() {
+	}
+
+	public Taxi(String immatriculation, String marque, String modele) {
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
+	}
+	
+	
+	public Taxi(String immatriculation, String marque, String modele, Agence agence) {
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
+		this.agence = agence;
+	}
+
+	//getters/setters
 	public Agence getAgence() {
 		return agence;
 	}
@@ -39,14 +58,14 @@ public class Taxi implements Serializable {
 
 
 
-	public Taxi() {
+	
+
+	public Chauffeur getChauffeur() {
+		return chauffeur;
 	}
 
-	public Taxi(Long idTaxi, String immatriculation, String marque, String modele) {
-		this.idTaxi = idTaxi;
-		this.immatriculation = immatriculation;
-		this.marque = marque;
-		this.modele = modele;
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
 	}
 
 	public Long getIdTaxi() {
