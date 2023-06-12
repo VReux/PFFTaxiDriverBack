@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -44,7 +45,7 @@ public class Course implements Serializable {
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
 	private Adresse adresseArrivee;
 
-	@OneToOne(mappedBy = "course")
+	@OneToOne(mappedBy = "course", cascade = CascadeType.REMOVE)
 	private Facture facture;
 
 	@OneToOne
@@ -55,12 +56,9 @@ public class Course implements Serializable {
 	@JoinColumn(name = "id_chauffeur")
 	private Chauffeur chauffeur;
 
-
-
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
-
 
 	public Reservation getReservation() {
 		return reservation;

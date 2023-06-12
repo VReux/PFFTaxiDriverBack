@@ -26,7 +26,7 @@ public class Taxi implements Serializable {
 	@JoinColumn(name = "id_agence")
 	private Agence agence;
 
-	@OneToOne(mappedBy = "taxi")
+	@OneToOne(mappedBy = "taxi",cascade = CascadeType.REMOVE)
 	private Chauffeur chauffeur;
 
 	public Agence getAgence() {

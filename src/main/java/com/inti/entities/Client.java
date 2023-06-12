@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -24,14 +25,14 @@ public class Client extends Utilisateur implements Serializable {
 
 		//Associations
 		
-		@OneToMany(mappedBy="client")
+		@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE)
 		private List<Reclamation> reclamations= new ArrayList<>();
 		
 		
 
 	
 		
-		@OneToMany(mappedBy="client")
+		@OneToMany(mappedBy="client", cascade = CascadeType.REMOVE)
 		private List<Reservation> reservations= new ArrayList<>();
 		
 		

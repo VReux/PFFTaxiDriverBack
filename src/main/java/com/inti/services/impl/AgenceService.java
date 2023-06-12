@@ -2,6 +2,8 @@ package com.inti.services.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import com.inti.repositories.AgenceRepository;
 import com.inti.services.interfaces.IAgenceService;
 
 @Service
+@Transactional
 public class AgenceService implements IAgenceService {
 	@Autowired
 	AgenceRepository agenceRepository;
