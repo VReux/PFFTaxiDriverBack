@@ -1,5 +1,7 @@
 package com.inti.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TAXIS", schema = "taxi_driver_db")
-public class Taxi {
+public class Taxi implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTaxi;
@@ -27,6 +29,25 @@ public class Taxi {
 	@OneToOne(mappedBy = "taxi",cascade = CascadeType.REMOVE)
 	private Chauffeur chauffeur;
 
+	//constructeurs
+	public Taxi() {
+	}
+
+	public Taxi(String immatriculation, String marque, String modele) {
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
+	}
+	
+	
+	public Taxi(String immatriculation, String marque, String modele, Agence agence) {
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
+		this.agence = agence;
+	}
+
+	//getters/setters
 	public Agence getAgence() {
 		return agence;
 	}
@@ -37,14 +58,14 @@ public class Taxi {
 
 
 
-	public Taxi() {
+	
+
+	public Chauffeur getChauffeur() {
+		return chauffeur;
 	}
 
-	public Taxi(Long idTaxi, String immatriculation, String marque, String modele) {
-		this.idTaxi = idTaxi;
-		this.immatriculation = immatriculation;
-		this.marque = marque;
-		this.modele = modele;
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
 	}
 
 	public Long getIdTaxi() {
