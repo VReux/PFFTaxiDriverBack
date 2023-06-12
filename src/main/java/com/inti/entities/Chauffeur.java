@@ -3,6 +3,7 @@ package com.inti.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -50,7 +51,7 @@ public class Chauffeur extends Utilisateur {
 		this.agence = agence;
 	}
 
-	@OneToMany(mappedBy = "chauffeur")
+	@OneToMany(mappedBy = "chauffeur", cascade = CascadeType.REMOVE)
 	private List<Course> courses = new ArrayList<>();
 
 	

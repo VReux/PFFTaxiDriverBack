@@ -21,7 +21,7 @@ public class Agence implements Serializable {
 
 	private String nomAgence;
 
-	@OneToMany(mappedBy = "agence")
+	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
 	private List<Chauffeur> chauffeurs = new ArrayList<>();
 
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
@@ -39,7 +39,6 @@ public class Agence implements Serializable {
 		this.taxis = taxis;
 	}
 
-
 	public Long getIdAgence() {
 		return idAgence;
 	}
@@ -55,7 +54,6 @@ public class Agence implements Serializable {
 	public void setNomAgence(String nomAgence) {
 		this.nomAgence = nomAgence;
 	}
-
 
 	@Override
 	public String toString() {
