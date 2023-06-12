@@ -54,13 +54,7 @@ public class Reservation implements Serializable {
 	@JoinColumn(name = "id_Client")
 	private Client client;
 
-	public List<Offre> getOffres() {
-		return offres;
-	}
 
-	public void setOffres(List<Offre> offres) {
-		this.offres = offres;
-	}
 
 	public Course getCourse() {
 		return course;

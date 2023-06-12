@@ -35,13 +35,7 @@ public class Taxi {
 		this.agence = agence;
 	}
 
-	public Chauffeur getChauffeur() {
-		return chauffeur;
-	}
 
-	public void setChauffeur(Chauffeur chauffeur) {
-		this.chauffeur = chauffeur;
-	}
 
 	public Taxi() {
 	}

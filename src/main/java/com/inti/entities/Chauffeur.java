@@ -53,13 +53,7 @@ public class Chauffeur extends Utilisateur {
 	@OneToMany(mappedBy = "chauffeur")
 	private List<Course> courses = new ArrayList<>();
 
-	public List<Course> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
-	}
+	
 
 	public Chauffeur() {
 		super();

@@ -48,13 +48,7 @@ public class Utilisateur {
 	@OneToMany(mappedBy = "utilisateur")
 	private List<Offre> offres = new ArrayList<>();
 
-	public List<Offre> getOffres() {
-		return offres;
-	}
 
-	public void setOffres(List<Offre> offres) {
-		this.offres = offres;
-	}
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "idUtilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "idRole", referencedColumnName = "idRole"))

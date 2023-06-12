@@ -39,13 +39,6 @@ public class Agence implements Serializable {
 		this.taxis = taxis;
 	}
 
-	public List<Chauffeur> getChauffeurs() {
-		return chauffeurs;
-	}
-
-	public void setChauffeurs(List<Chauffeur> chauffeurs) {
-		this.chauffeurs = chauffeurs;
-	}
 
 	public Long getIdAgence() {
 		return idAgence;
@@ -63,13 +56,6 @@ public class Agence implements Serializable {
 		this.nomAgence = nomAgence;
 	}
 
-	public List<Taxi> getTaxis() {
-		return taxis;
-	}
-
-	public void setTaxis(List<Taxi> taxis) {
-		this.taxis = taxis;
-	}
 
 	@Override
 	public String toString() {

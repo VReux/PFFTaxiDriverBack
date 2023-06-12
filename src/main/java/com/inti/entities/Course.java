@@ -55,17 +55,12 @@ public class Course implements Serializable {
 	@JoinColumn(name = "id_chauffeur")
 	private Chauffeur chauffeur;
 
-	public Facture getFacture() {
-		return facture;
-	}
+
 
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
 
-	public void setFacture(Facture facture) {
-		this.facture = facture;
-	}
 
 	public Reservation getReservation() {
 		return reservation;
