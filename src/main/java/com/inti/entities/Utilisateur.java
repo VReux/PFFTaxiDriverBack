@@ -1,101 +1,114 @@
 package com.inti.entities;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
-@Table(name="UTILISATEURS", schema="taxi_driver_db")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type", discriminatorType=DiscriminatorType.STRING)
+@Table(name = "UTILISATEURS", schema = "taxi_driver_db")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 public class Utilisateur {
 	// attributs
-	
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Long idUtilisateur;
-		
-		
-		private String nom;
-		private String prenom;
-		private String username;
-		private String password;
 
-		//relations
-	/*	@OneToMany(mappedBy="utilisateur")
-		private List<Offre> offres=new ArrayList<>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idUtilisateur;
 
-		public List<Offre> getOffres() {
-			return offres;
-		}
+	public Set<Role> getRoles() {
+		return roles;
+	}
 
-		public void setOffres(List<Offre> offres) {
-			this.offres = offres;
-		}*/
-		
-		
-		
-		public Long getIdUtilisateur() {
-			return idUtilisateur;
-		}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 
-		public void setIdUtilisateur(Long idUtilisateur) {
-			this.idUtilisateur = idUtilisateur;
-		}
+	private String nom;
+	private String prenom;
+	private String username;
+	private String password;
 
-		public String getNom() {
-			return nom;
-		}
+	// relations
+	@OneToMany(mappedBy = "utilisateur")
+	private List<Offre> offres = new ArrayList<>();
 
-		public void setNom(String nom) {
-			this.nom = nom;
-		}
 
-		public String getPrenom() {
-			return prenom;
-		}
 
-		public void setPrenom(String prenom) {
-			this.prenom = prenom;
-		}
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "idUtilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "idRole", referencedColumnName = "idRole"))
+	private Set<Role> roles = new HashSet<>();
 
-		public String getUsername() {
-			return username;
-		}
+	public Long getIdUtilisateur() {
+		return idUtilisateur;
+	}
 
-		public void setUsername(String username) {
-			this.username = username;
-		}
+	public void setIdUtilisateur(Long idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
+	}
 
-		public String getPassword() {
-			return password;
-		}
+	public String getNom() {
+		return nom;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-		public Utilisateur() {
-		}
-		
-		public Utilisateur(Long idUtilisateur, String nom, String prenom, String username, String password) {
-			this.idUtilisateur = idUtilisateur;
-			this.nom = nom;
-			this.prenom = prenom;
-			this.username = username;
-			this.password = password;
-		}
+	public String getPrenom() {
+		return prenom;
+	}
 
-		@Override
-		public String toString() {
-			return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", username="
-					+ username + ", password=" + password + "]";
-		}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Utilisateur() {
+	}
+
+	public Utilisateur(Long idUtilisateur, String nom, String prenom, String username, String password) {
+		this.idUtilisateur = idUtilisateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nom=" + nom + ", prenom=" + prenom + ", username="
+				+ username + ", password=" + password + "]";
+	}
 
 }

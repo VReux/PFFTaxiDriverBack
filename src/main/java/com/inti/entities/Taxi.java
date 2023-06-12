@@ -19,17 +19,28 @@ public class Taxi {
 	private String immatriculation;
 	private String marque;
 	private String modele;
+
 	@ManyToOne
-	@JoinColumn(name="id_agence")
+	@JoinColumn(name = "id_agence")
 	private Agence agence;
-	// @OneToOne (mappedBy="taxi")
-	// private Chauffeur chauffeur;
+
+	@OneToOne(mappedBy = "taxi")
+	private Chauffeur chauffeur;
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+
+
 
 	public Taxi() {
 	}
 
 	public Taxi(Long idTaxi, String immatriculation, String marque, String modele) {
-		super();
 		this.idTaxi = idTaxi;
 		this.immatriculation = immatriculation;
 		this.marque = marque;

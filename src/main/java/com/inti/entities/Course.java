@@ -44,16 +44,39 @@ public class Course implements Serializable {
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
 	private Adresse adresseArrivee;
 
-	// @OneToOne(mappedBy="courseFK")
-	// private Facture facture;
+	@OneToOne(mappedBy = "course")
+	private Facture facture;
 
-	// @OneToOne
-	// @JoinColumn(name = "id_reservation")
-	// private Reservation reservationFK;
+	@OneToOne
+	@JoinColumn(name = "id_reservation")
+	private Reservation reservation;
 
-	// @ManyToOne
-	// @JoinColumn(name="id_chauffeur")
-	// private Chauffeur chauffeur;
+	@ManyToOne
+	@JoinColumn(name = "id_chauffeur")
+	private Chauffeur chauffeur;
+
+
+
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
+	}
+
+
+	public Reservation getReservation() {
+		return reservation;
+	}
+
+	public void setReservationFK(Reservation reservation) {
+		this.reservation = reservation;
+	}
+
+	public Chauffeur getChauffeur() {
+		return chauffeur;
+	}
+
+	public void setChauffeur(Chauffeur chauffeur) {
+		this.chauffeur = chauffeur;
+	}
 
 	public Course() {
 

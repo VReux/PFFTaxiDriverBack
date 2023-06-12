@@ -12,6 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
@@ -19,36 +23,58 @@ import com.inti.model.Adresse;
 
 @Entity
 @Table(name = "RESERVATIONS", schema = "taxi_driver_db")
-public class Reservation implements Serializable{
+public class Reservation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReservation;
 	private Date heureDepart;
 	private float tauxHoraire;
 	private boolean validation;
-	
+
 	@Embedded
-	@AttributeOverrides({ 
-			@AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
+	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseDepart_codePostal")),
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseDepart_ville")) })
 	private Adresse adresseDepart;
 
 	@Embedded
-	@AttributeOverrides({ 
-		@AttributeOverride(name = "rue", column = @Column(name = "adresseArrivee_rue")),
-		@AttributeOverride(name = "codePostal", column = @Column(name = "adresseArrivee_codePostal")),
-		@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
+	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseArrivee_rue")),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseArrivee_codePostal")),
+			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
 	private Adresse adresseArrivee;
-	
-	/*@OneToMany(mappedBy = "reservation")
-	private List<Offre> offres = new ArrayList<>();*/
-	/*@OneToOne 
+
+	@OneToMany(mappedBy = "reservation")
+	private List<Offre> offres = new ArrayList<>();
+
+	@OneToOne
 	@JoinColumn(name = "id_course")
-	private Course courseForeignKey;*/
+	private Course course;
+
+	@ManyToOne
+	@JoinColumn(name = "id_Client")
+	private Client client;
+
+
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	public Reservation() {
 	}
-	
+
 	public Reservation(Date heureDepart, float tauxHoraire, boolean validation) {
 		this.heureDepart = heureDepart;
 		this.tauxHoraire = tauxHoraire;
@@ -98,9 +124,9 @@ public class Reservation implements Serializable{
 	public boolean isValidation() {
 		return validation;
 	}
-	
+
 	public boolean getValidation() {
-        return validation;
+		return validation;
 	}
 
 	public void setValidation(boolean validation) {
@@ -112,10 +138,5 @@ public class Reservation implements Serializable{
 		return "Reservation [idReservation=" + idReservation + ", heureDepart=" + heureDepart + ", tauxHoraire="
 				+ tauxHoraire + ", validation=" + validation + "]";
 	}
-	
-	
-	
 
-	
-	
 }

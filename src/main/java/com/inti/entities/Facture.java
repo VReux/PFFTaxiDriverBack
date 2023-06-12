@@ -19,17 +19,29 @@ public class Facture implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFacture;
+
 	private float tempsCourse;
+
 	private float prixReelHT;
+
 	private float prixReelTTC;
+
 	private float tva;
+
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	/*
-	 * @OneToOne
-	 * 
-	 * @JoinColumn(name = "id_course") private Course courseForeignKey;
-	 */
+
+	@OneToOne
+	@JoinColumn(name = "id_course")
+	private Course course;
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 
 	public Facture() {
 
