@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "AGENCES", schema = "taxi_driver_db")
 public class Agence implements Serializable {
@@ -27,9 +29,7 @@ public class Agence implements Serializable {
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
 	private List<Taxi> taxis = new ArrayList<>();
 
-
-
-	//Constructeurs
+	// Constructeurs
 	public Agence() {
 	}
 
@@ -37,10 +37,7 @@ public class Agence implements Serializable {
 		this.nomAgence = nomAgence;
 	}
 
-
-
-
-	//getters/setters
+	// getters/setters
 	public List<Chauffeur> getChauffeurs() {
 		return chauffeurs;
 	}
@@ -56,6 +53,7 @@ public class Agence implements Serializable {
 	public void setTaxis(List<Taxi> taxis) {
 		this.taxis = taxis;
 	}
+
 	public Long getIdAgence() {
 		return idAgence;
 	}

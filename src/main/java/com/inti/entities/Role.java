@@ -16,8 +16,7 @@ public class Role implements Serializable {
 	private Long idRole;
 	private String libelle;
 
-	
-	//constructeurs
+	// constructeurs
 	public Role() {
 
 	}
@@ -26,8 +25,7 @@ public class Role implements Serializable {
 		this.libelle = libelle;
 	}
 
-	
-	//getters/setters
+	// getters/setters
 	public Long getIdRole() {
 		return idRole;
 	}
@@ -43,7 +41,6 @@ public class Role implements Serializable {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
-	
 
 	@Override
 	public String toString() {

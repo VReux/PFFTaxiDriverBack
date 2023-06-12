@@ -15,42 +15,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.inti.entities.Offre;
 import com.inti.services.interfaces.IOffreService;
 
-@RestController 
+@RestController
 @CrossOrigin
 public class OffreController {
 	@Autowired
 	IOffreService offreService;
-	
-	// @RequestMapping(value = "offres", method = RequestMethod.GET)
-		@GetMapping("/offres")
-		public List<Offre> findAll() {
-			return offreService.findAll();
-		}
 
-		// @RequestMapping(value = "offres/{idOffre}", method = RequestMethod.GET)
-		@GetMapping("/offres/{idOffre}")
-		public Offre findOne(@PathVariable("idOffre") Long id) {
-			return offreService.findOne(id);
-		}
+	@GetMapping("/offres")
+	public List<Offre> findAll() {
+		return offreService.findAll();
+	}
 
-		// @RequestMapping(value = "offres", method = RequestMethod.POST)
-		@PostMapping("/offres")
-		public Offre saveOffre(@RequestBody Offre offre) {
-			return offreService.save(offre);
-		}
+	@GetMapping("/offres/{idOffre}")
+	public Offre findOne(@PathVariable("idOffre") Long id) {
+		return offreService.findOne(id);
+	}
 
-		// @RequestMapping(value = "offres/{idOffre}", method = RequestMethod.DELETE)
-		@DeleteMapping("/offres/{idOffre}")
-		public void deleteOffre(@PathVariable("idOffre") Long id) {
-			offreService.delete(id);
-		}
+	@PostMapping("/offres")
+	public Offre saveOffre(@RequestBody Offre offre) {
+		return offreService.save(offre);
+	}
 
-		// @RequestMapping(value = "offres/{idOffre}", method = RequestMethod.PUT)
-		@PutMapping("/offres/{idOffre}")
-		public Offre updateOffre(@PathVariable("idOffre") Long id, @RequestBody Offre offre) {
-			Offre currentOffre = offreService.findOne(id);
-			currentOffre.setCodePromo(offre.getCodePromo());
-			return offreService.save(currentOffre);
-		}
-	
+	@DeleteMapping("/offres/{idOffre}")
+	public void deleteOffre(@PathVariable("idOffre") Long id) {
+		offreService.delete(id);
+	}
+
+	@PutMapping("/offres/{idOffre}")
+	public Offre updateOffre(@PathVariable("idOffre") Long id, @RequestBody Offre offre) {
+		Offre currentOffre = offreService.findOne(id);
+		currentOffre.setCodePromo(offre.getCodePromo());
+		return offreService.save(currentOffre);
+	}
+
 }

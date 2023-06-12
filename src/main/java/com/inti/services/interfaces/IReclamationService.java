@@ -5,7 +5,7 @@ import java.util.List;
 import com.inti.entities.Reclamation;
 
 public interface IReclamationService {
-	
+
 	List<Reclamation> findAll();
 
 	Reclamation findOne(Long idReclamation);

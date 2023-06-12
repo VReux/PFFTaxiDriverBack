@@ -21,31 +21,26 @@ public class ReservationController {
 	@Autowired
 	IReservationService reservationService;
 
-	//@RequestMapping(value = "reservations", method = RequestMethod.GET)
 	@GetMapping("/reservations")
 	public List<Reservation> findAll() {
 		return reservationService.findAll();
 	}
 
-	//@RequestMapping(value = "reservations/{idReservation}", method = RequestMethod.GET)
 	@GetMapping("/reservations/{idReservation}")
 	public Reservation findOne(@PathVariable("idReservation") Long id) {
 		return reservationService.findOne(id);
 	}
 
-	//@RequestMapping(value = "reservations", method = RequestMethod.POST)
 	@PostMapping("/reservations")
 	public Reservation saveUtilisateur(@RequestBody Reservation reservation) {
 		return reservationService.save(reservation);
 	}
 
-	//@RequestMapping(value = "reservations/{idReservation}", method = RequestMethod.DELETE)
 	@DeleteMapping("/reservations/{idReservation}")
 	public void deleteUtilisateur(@PathVariable("idReservation") Long id) {
 		reservationService.delete(id);
 	}
 
-	//@RequestMapping(value = "reservations/{idReservation}", method = RequestMethod.PUT)
 	@PutMapping("/reservations/{idReservations}")
 	public Reservation updateReservation(@PathVariable("idReservation") Long id, @RequestBody Reservation reservation) {
 		Reservation currentReservation = reservationService.findOne(id);

@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "TAXIS", schema = "taxi_driver_db")
 public class Taxi implements Serializable {
@@ -24,12 +26,14 @@ public class Taxi implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_agence")
+	@JsonIgnore
 	private Agence agence;
 
-	@OneToOne(mappedBy = "taxi",cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "taxi", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private Chauffeur chauffeur;
 
-	//constructeurs
+	// constructeurs
 	public Taxi() {
 	}
 
@@ -38,8 +42,7 @@ public class Taxi implements Serializable {
 		this.marque = marque;
 		this.modele = modele;
 	}
-	
-	
+
 	public Taxi(String immatriculation, String marque, String modele, Agence agence) {
 		this.immatriculation = immatriculation;
 		this.marque = marque;
@@ -47,7 +50,7 @@ public class Taxi implements Serializable {
 		this.agence = agence;
 	}
 
-	//getters/setters
+	// getters/setters
 	public Agence getAgence() {
 		return agence;
 	}
@@ -55,10 +58,6 @@ public class Taxi implements Serializable {
 	public void setAgence(Agence agence) {
 		this.agence = agence;
 	}
-
-
-
-	
 
 	public Chauffeur getChauffeur() {
 		return chauffeur;

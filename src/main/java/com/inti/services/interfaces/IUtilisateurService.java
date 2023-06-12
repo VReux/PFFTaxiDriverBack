@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.inti.entities.Utilisateur;
 
-
 public interface IUtilisateurService {
 	List<Utilisateur> findAll();
 

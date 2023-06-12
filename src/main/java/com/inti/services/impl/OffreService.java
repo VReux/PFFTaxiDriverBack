@@ -2,8 +2,6 @@ package com.inti.services.impl;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +13,10 @@ import com.inti.services.interfaces.IOffreService;
 @Service
 @Transactional
 public class OffreService implements IOffreService {
-	
+
 	@Autowired
 	OffreRepository offreRepository;
 
-	
 	@Override
 	public List<Offre> findAll() {
 		return offreRepository.findAll();

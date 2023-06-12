@@ -5,7 +5,7 @@ import java.util.List;
 import com.inti.entities.Course;
 
 public interface ICourseService {
-	
+
 	List<Course> findAll();
 
 	Course findOne(Long idCourse);

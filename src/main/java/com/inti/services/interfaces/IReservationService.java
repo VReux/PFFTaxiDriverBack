@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.inti.entities.Reservation;
 
-
 public interface IReservationService {
 	List<Reservation> findAll();
 
@@ -14,5 +13,3 @@ public interface IReservationService {
 
 	void delete(Long id);
 }
-
-

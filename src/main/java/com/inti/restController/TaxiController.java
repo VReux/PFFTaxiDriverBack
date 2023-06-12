@@ -20,7 +20,7 @@ import com.inti.services.interfaces.ITaxiService;
 public class TaxiController {
 	@Autowired
 	ITaxiService taxiService;
-	
+
 	@GetMapping("/taxis")
 	public List<Taxi> findAll() {
 		return taxiService.findAll();

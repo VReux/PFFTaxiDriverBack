@@ -9,9 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.inti.entities.Utilisateur;
 
 public class UtilisateurDetail implements UserDetails {
-	
+
 	private Utilisateur utilisateur;
-	Set<GrantedAuthority> authorities=null;		// manipuler les profils lors de l'utilisation de la méthode baa
+	Set<GrantedAuthority> authorities = null; // manipuler les profils lors de l'utilisation de la méthode baa
 
 	public Utilisateur getUtilisateur() {
 		return utilisateur;

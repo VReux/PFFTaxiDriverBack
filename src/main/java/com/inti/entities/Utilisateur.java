@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,12 +22,16 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "UTILISATEURS", schema = "taxi_driver_db")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue("Utilisateur")
 public class Utilisateur implements Serializable {
 	// attributs
 
@@ -43,12 +48,12 @@ public class Utilisateur implements Serializable {
 	}
 
 	private String nom;
-	
+
 	private String prenom;
 
-	@Column(unique=true)
+	@Column(unique = true)
 	private String username;
-	
+
 	private String password;
 
 	// relations
@@ -59,9 +64,8 @@ public class Utilisateur implements Serializable {
 	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "idUtilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "idRole", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
 
-	
-	//constructeurs
-	
+	// constructeurs
+
 	public Utilisateur() {
 	}
 
@@ -71,10 +75,8 @@ public class Utilisateur implements Serializable {
 		this.username = username;
 		this.password = password;
 	}
-	
-	
-	public Utilisateur(String nom, String prenom, String username, String password,
-			Set<Role> roles) {
+
+	public Utilisateur(String nom, String prenom, String username, String password, Set<Role> roles) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.username = username;
@@ -82,8 +84,8 @@ public class Utilisateur implements Serializable {
 		this.roles = roles;
 	}
 
-	//getters/setters
-	
+	// getters/setters
+
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
 	}
@@ -131,7 +133,6 @@ public class Utilisateur implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	@Override
 	public String toString() {

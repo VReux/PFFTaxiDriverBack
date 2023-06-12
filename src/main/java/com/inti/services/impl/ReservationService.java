@@ -2,7 +2,6 @@ package com.inti.services.impl;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +12,8 @@ import com.inti.services.interfaces.IReservationService;
 
 @Service
 @Transactional
-public class ReservationService implements IReservationService{
-	
+public class ReservationService implements IReservationService {
+
 	@Autowired
 	ReservationRepository reservationRepository;
 
@@ -36,7 +35,7 @@ public class ReservationService implements IReservationService{
 	@Override
 	public void delete(Long id) {
 		reservationRepository.deleteById(id);
-		
+
 	}
 
 }

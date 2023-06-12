@@ -13,7 +13,7 @@ import com.inti.services.interfaces.ICourseService;
 @Service
 @Transactional
 public class CourseService implements ICourseService {
-	
+
 	@Autowired
 	ICourseRepository courseRepository;
 
