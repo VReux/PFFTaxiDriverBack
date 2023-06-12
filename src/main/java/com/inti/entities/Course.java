@@ -45,6 +45,8 @@ public class Course implements Serializable {
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
 	private Adresse adresseArrivee;
 
+	
+	//Associations
 	@OneToOne(mappedBy = "course", cascade = CascadeType.REMOVE)
 	private Facture facture;
 
@@ -56,25 +58,10 @@ public class Course implements Serializable {
 	@JoinColumn(name = "id_chauffeur")
 	private Chauffeur chauffeur;
 
-	public void setReservation(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
-	public Reservation getReservation() {
-		return reservation;
-	}
-
-	public void setReservationFK(Reservation reservation) {
-		this.reservation = reservation;
-	}
-
-	public Chauffeur getChauffeur() {
-		return chauffeur;
-	}
-
-	public void setChauffeur(Chauffeur chauffeur) {
-		this.chauffeur = chauffeur;
-	}
+	
+	
+	
+	//constructeurs
 
 	public Course() {
 
@@ -89,7 +76,6 @@ public class Course implements Serializable {
 
 	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel,
 			Adresse adresseDepart, Adresse adresseArrivee) {
-		super();
 		this.avisCourse = avisCourse;
 		this.noteCourse = noteCourse;
 		this.noteChauffeur = noteChauffeur;
@@ -99,6 +85,51 @@ public class Course implements Serializable {
 		this.adresseArrivee = adresseArrivee;
 	}
 
+	
+	
+	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse,
+			float prixReel, Adresse adresseDepart, Adresse adresseArrivee, Reservation reservation,
+			Chauffeur chauffeur) {
+		this.avisCourse = avisCourse;
+		this.noteCourse = noteCourse;
+		this.noteChauffeur = noteChauffeur;
+		this.tempsCourse = tempsCourse;
+		this.prixReel = prixReel;
+		this.adresseDepart = adresseDepart;
+		this.adresseArrivee = adresseArrivee;
+		this.reservation = reservation;
+		this.chauffeur = chauffeur;
+	}
+
+	//getters and setters
+		public void setReservation(Reservation reservation) {
+			this.reservation = reservation;
+		}
+
+		public Reservation getReservation() {
+			return reservation;
+		}
+
+		public void setReservationFK(Reservation reservation) {
+			this.reservation = reservation;
+		}
+
+		public Chauffeur getChauffeur() {
+			return chauffeur;
+		}
+
+		public void setChauffeur(Chauffeur chauffeur) {
+			this.chauffeur = chauffeur;
+		}
+
+		public Facture getFacture() {
+			return facture;
+		}
+
+		public void setFacture(Facture facture) {
+			this.facture = facture;
+		}
+		
 	public Long getIdCourse() {
 		return idCourse;
 	}

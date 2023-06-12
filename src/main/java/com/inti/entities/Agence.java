@@ -27,6 +27,9 @@ public class Agence implements Serializable {
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
 	private List<Taxi> taxis = new ArrayList<>();
 
+
+
+	//Constructeurs
 	public Agence() {
 	}
 
@@ -34,11 +37,25 @@ public class Agence implements Serializable {
 		this.nomAgence = nomAgence;
 	}
 
-	public Agence(String nomAgence, List<Taxi> taxis) {
-		this.nomAgence = nomAgence;
-		this.taxis = taxis;
+
+
+
+	//getters/setters
+	public List<Chauffeur> getChauffeurs() {
+		return chauffeurs;
 	}
 
+	public void setChauffeurs(List<Chauffeur> chauffeurs) {
+		this.chauffeurs = chauffeurs;
+	}
+
+	public List<Taxi> getTaxis() {
+		return taxis;
+	}
+
+	public void setTaxis(List<Taxi> taxis) {
+		this.taxis = taxis;
+	}
 	public Long getIdAgence() {
 		return idAgence;
 	}

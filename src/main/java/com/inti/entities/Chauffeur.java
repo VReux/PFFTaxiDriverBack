@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("Chauffeur")
-public class Chauffeur extends Utilisateur {
+public class Chauffeur extends Utilisateur implements Serializable {
 
 	private String numPermis;
 
@@ -31,31 +32,15 @@ public class Chauffeur extends Utilisateur {
 	@JoinColumn(name = "id_taxi")
 	private Taxi taxi;
 
-	public Taxi getTaxi() {
-		return taxi;
-	}
-
-	public void setTaxi(Taxi taxi) {
-		this.taxi = taxi;
-	}
-
 	@ManyToOne
 	@JoinColumn(name = "Agence")
 	private Agence agence;
 
-	public Agence getAgence() {
-		return agence;
-	}
-
-	public void setAgence(Agence agence) {
-		this.agence = agence;
-	}
-
 	@OneToMany(mappedBy = "chauffeur", cascade = CascadeType.REMOVE)
 	private List<Course> courses = new ArrayList<>();
 
-	
 
+	//constructeurs
 	public Chauffeur() {
 		super();
 	}
@@ -65,6 +50,39 @@ public class Chauffeur extends Utilisateur {
 		this.numPermis = numPermis;
 	}
 
+
+	public Chauffeur(String numPermis, Taxi taxi, Agence agence) {
+		super();
+		this.numPermis = numPermis;
+		this.taxi = taxi;
+		this.agence = agence;
+	}
+
+	
+	//getters/setters
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+	
+	public Taxi getTaxi() {
+		return taxi;
+	}
+
+	public void setTaxi(Taxi taxi) {
+		this.taxi = taxi;
+	}
+	
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
 	@Override
 	public String toString() {
 		return super.toString() + "Chauffeur [numPermis=" + numPermis + "]";

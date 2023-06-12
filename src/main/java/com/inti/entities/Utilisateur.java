@@ -1,11 +1,13 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -25,7 +27,7 @@ import javax.persistence.JoinColumn;
 @Table(name = "UTILISATEURS", schema = "taxi_driver_db")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 	// attributs
 
 	@Id
@@ -41,8 +43,12 @@ public class Utilisateur {
 	}
 
 	private String nom;
+	
 	private String prenom;
+	
+	@Column(unique=true)
 	private String username;
+	
 	private String password;
 
 	// relations
@@ -55,8 +61,41 @@ public class Utilisateur {
 	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "idUtilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "idRole", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
 
+	
+	//constructeurs
+	
+	public Utilisateur() {
+	}
+
+	public Utilisateur(String nom, String prenom, String username, String password) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+	}
+	
+	
+	public Utilisateur(String nom, String prenom, String username, String password,
+			Set<Role> roles) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.username = username;
+		this.password = password;
+		this.roles = roles;
+	}
+
+	//getters/setters
+	
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
+	}
+
+	public List<Offre> getOffres() {
+		return offres;
+	}
+
+	public void setOffres(List<Offre> offres) {
+		this.offres = offres;
 	}
 
 	public void setIdUtilisateur(Long idUtilisateur) {
@@ -95,16 +134,7 @@ public class Utilisateur {
 		this.password = password;
 	}
 
-	public Utilisateur() {
-	}
 
-	public Utilisateur(Long idUtilisateur, String nom, String prenom, String username, String password) {
-		this.idUtilisateur = idUtilisateur;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.username = username;
-		this.password = password;
-	}
 
 	@Override
 	public String toString() {

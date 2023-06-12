@@ -1,5 +1,7 @@
 package com.inti.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RECLAMATIONS", schema = "taxi_driver_db")
-public class Reclamation {
+public class Reclamation implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +23,23 @@ public class Reclamation {
 	@JoinColumn(name = "id_client")
 	private Client client;
 
+	
+	//constructeurs
 	public Reclamation() {
 	}
 
+	public Reclamation(String texte) {
+		this.texte = texte;
+	}
+	
+	public Reclamation(String texte, Client client) {
+		this.texte = texte;
+		this.client = client;
+	}
+
+
+
+	//getters/setters
 	public Client getClient() {
 		return client;
 	}
@@ -32,9 +48,7 @@ public class Reclamation {
 		this.client = client;
 	}
 
-	public Reclamation(String texte) {
-		this.texte = texte;
-	}
+
 
 	public Long getIdReclamation() {
 		return idReclamation;
