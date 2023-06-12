@@ -45,7 +45,7 @@ public class Utilisateur implements Serializable {
 	private String nom;
 	
 	private String prenom;
-	
+
 	@Column(unique=true)
 	private String username;
 	
@@ -54,8 +54,6 @@ public class Utilisateur implements Serializable {
 	// relations
 	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.REMOVE)
 	private List<Offre> offres = new ArrayList<>();
-
-
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "PROFILS", joinColumns = @JoinColumn(name = "idUtilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "idRole", referencedColumnName = "idRole"))
@@ -133,7 +131,6 @@ public class Utilisateur implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 
 	@Override

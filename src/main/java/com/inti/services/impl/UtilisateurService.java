@@ -17,7 +17,7 @@ import com.inti.services.interfaces.IUtilisateurService;
 public class UtilisateurService implements IUtilisateurService {
 	@Autowired
 	UtilisateurRepository utilisateurRepository;
-	
+
 	@Override
 	public List<Utilisateur> findAll() {
 		return utilisateurRepository.findAll();
@@ -36,9 +36,12 @@ public class UtilisateurService implements IUtilisateurService {
 	@Override
 	public void delete(Long id) {
 		utilisateurRepository.deleteById(id);
-		
+
+	}
+
+	@Override
+	public Utilisateur findByUsername(String username) {
+		return utilisateurRepository.findByUsername(username);
 	}
 
 }
-
-
