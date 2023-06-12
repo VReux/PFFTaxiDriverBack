@@ -14,10 +14,10 @@ import com.inti.services.interfaces.IChauffeurService;
 
 @Service
 @Transactional
-public class ChauffeurService implements IChauffeurService{
+public class ChauffeurService implements IChauffeurService {
 	@Autowired
 	ChauffeurRepository chauffeurRepository;
-	
+
 	@Override
 	public List<Chauffeur> findAll() {
 		return chauffeurRepository.findAll();
@@ -36,7 +36,7 @@ public class ChauffeurService implements IChauffeurService{
 	@Override
 	public void delete(Long id) {
 		chauffeurRepository.deleteById(id);
-		
+
 	}
 
 }

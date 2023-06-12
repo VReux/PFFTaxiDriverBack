@@ -18,15 +18,15 @@ import com.inti.services.interfaces.ICourseService;
 @RestController
 @CrossOrigin
 public class CourseController {
-	
+
 	@Autowired
 	ICourseService courseService;
-	
+
 	@GetMapping("/courses")
 	public List<Course> findAll() {
 		return courseService.findAll();
 	}
-	
+
 	@GetMapping("/courses/{idCourse}")
 	public Course findOne(@PathVariable("idCourse") Long idCourse) {
 		return courseService.findOne(idCourse);
@@ -37,7 +37,7 @@ public class CourseController {
 		return courseService.save(course);
 	}
 
-	@DeleteMapping( "courses/{idCourse}")
+	@DeleteMapping("courses/{idCourse}")
 	public void deleteCourse(@PathVariable("idCourse") Long idCourse) {
 		courseService.delete(idCourse);
 	}
@@ -52,7 +52,7 @@ public class CourseController {
 		currentCourse.setTempsCourse(course.getTempsCourse());
 		currentCourse.setPrixReel(course.getPrixReel());
 		currentCourse.setAdresseDepart(course.getAdresseDepart());
-		currentCourse.setAdresseArrivee(course.getAdresseArrivee());		
+		currentCourse.setAdresseArrivee(course.getAdresseArrivee());
 		return courseService.save(currentCourse);
 	}
 

@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inti.model.Adresse;
 
 @Entity
@@ -48,14 +49,14 @@ public class Reservation implements Serializable {
 
 	@OneToOne
 	@JoinColumn(name = "id_course")
+	@JsonIgnore
 	private Course course;
 
 	@ManyToOne
 	@JoinColumn(name = "id_Client")
 	private Client client;
 
-
-	//constructeur
+	// constructeur
 	public Reservation() {
 	}
 
@@ -64,10 +65,9 @@ public class Reservation implements Serializable {
 		this.tauxHoraire = tauxHoraire;
 		this.validation = validation;
 	}
-	
-	
-	public Reservation(Date heureDepart, float tauxHoraire, boolean validation,
-			Adresse adresseDepart, Adresse adresseArrivee, Course course, Client client) {
+
+	public Reservation(Date heureDepart, float tauxHoraire, boolean validation, Adresse adresseDepart,
+			Adresse adresseArrivee, Course course, Client client) {
 		this.heureDepart = heureDepart;
 		this.tauxHoraire = tauxHoraire;
 		this.validation = validation;
@@ -77,7 +77,7 @@ public class Reservation implements Serializable {
 		this.client = client;
 	}
 
-	//getters/setters
+	// getters/setters
 	public Course getCourse() {
 		return course;
 	}
@@ -101,8 +101,6 @@ public class Reservation implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
-	
 
 	public Long getIdReservation() {
 		return idReservation;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.inti.entities.Chauffeur;
 import com.inti.entities.Utilisateur;
 
-public interface IChauffeurService{
+public interface IChauffeurService {
 	List<Chauffeur> findAll();
 
 	Chauffeur findOne(Long id);

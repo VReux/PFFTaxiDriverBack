@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @DiscriminatorValue("Chauffeur")
 public class Chauffeur extends Utilisateur implements Serializable {
@@ -34,13 +36,14 @@ public class Chauffeur extends Utilisateur implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "Agence")
+	@JsonIgnore
 	private Agence agence;
 
 	@OneToMany(mappedBy = "chauffeur", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private List<Course> courses = new ArrayList<>();
 
-
-	//constructeurs
+	// constructeurs
 	public Chauffeur() {
 		super();
 	}
@@ -50,7 +53,6 @@ public class Chauffeur extends Utilisateur implements Serializable {
 		this.numPermis = numPermis;
 	}
 
-
 	public Chauffeur(String numPermis, Taxi taxi, Agence agence) {
 		super();
 		this.numPermis = numPermis;
@@ -58,8 +60,7 @@ public class Chauffeur extends Utilisateur implements Serializable {
 		this.agence = agence;
 	}
 
-	
-	//getters/setters
+	// getters/setters
 	public List<Course> getCourses() {
 		return courses;
 	}
@@ -67,7 +68,7 @@ public class Chauffeur extends Utilisateur implements Serializable {
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
-	
+
 	public Taxi getTaxi() {
 		return taxi;
 	}
@@ -75,7 +76,7 @@ public class Chauffeur extends Utilisateur implements Serializable {
 	public void setTaxi(Taxi taxi) {
 		this.taxi = taxi;
 	}
-	
+
 	public Agence getAgence() {
 		return agence;
 	}
@@ -83,6 +84,7 @@ public class Chauffeur extends Utilisateur implements Serializable {
 	public void setAgence(Agence agence) {
 		this.agence = agence;
 	}
+
 	@Override
 	public String toString() {
 		return super.toString() + "Chauffeur [numPermis=" + numPermis + "]";

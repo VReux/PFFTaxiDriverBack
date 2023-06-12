@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import com.inti.entities.Client;
 import com.inti.entities.Utilisateur;
 
-
-public interface IClientService{
+public interface IClientService {
 	List<Client> findAll();
 
 	Client findOne(Long id);

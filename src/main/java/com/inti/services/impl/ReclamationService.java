@@ -12,8 +12,8 @@ import com.inti.services.interfaces.IReclamationService;
 
 @Service
 @Transactional
-public class ReclamationService implements IReclamationService{
-	
+public class ReclamationService implements IReclamationService {
+
 	@Autowired
 	IReclamationRepository reclamationRepository;
 
@@ -34,7 +34,7 @@ public class ReclamationService implements IReclamationService{
 
 	@Override
 	public void delete(Long idReclamation) {
-		
+
 	}
 
 }

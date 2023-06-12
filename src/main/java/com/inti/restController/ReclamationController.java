@@ -18,15 +18,15 @@ import com.inti.services.interfaces.IReclamationService;
 @RestController
 @CrossOrigin
 public class ReclamationController {
-	
+
 	@Autowired
 	IReclamationService reclamationService;
-	
+
 	@GetMapping("/reclamations")
 	public List<Reclamation> findAll() {
 		return reclamationService.findAll();
 	}
-	
+
 	@GetMapping("/reclamations/{idReclamation}")
 	public Reclamation findOne(@PathVariable("idReclamation") Long idReclamation) {
 		return reclamationService.findOne(idReclamation);
@@ -37,16 +37,17 @@ public class ReclamationController {
 		return reclamationService.save(reclamation);
 	}
 
-	@DeleteMapping( "reclamations/{idReclamation}")
+	@DeleteMapping("reclamations/{idReclamation}")
 	public void deleteReclamation(@PathVariable("idReclamation") Long idReclamation) {
 		reclamationService.delete(idReclamation);
 	}
 
 	@PutMapping("reclamations/{idReclamation}")
-	public Reclamation updateReclamation(@PathVariable("idReclamation") Long idReclamation, @RequestBody Reclamation reclamation) {
+	public Reclamation updateReclamation(@PathVariable("idReclamation") Long idReclamation,
+			@RequestBody Reclamation reclamation) {
 		Reclamation currentReclamation = reclamationService.findOne(idReclamation);
-		currentReclamation.setIdReclamation(reclamation.getIdReclamation());	
-		currentReclamation.setTexte(reclamation.getTexte());	
+		currentReclamation.setIdReclamation(reclamation.getIdReclamation());
+		currentReclamation.setTexte(reclamation.getTexte());
 		return reclamationService.save(currentReclamation);
 	}
 

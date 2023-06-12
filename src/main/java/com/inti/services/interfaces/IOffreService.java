@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.inti.entities.Offre;
 
-
 public interface IOffreService {
 	List<Offre> findAll();
 
@@ -14,5 +13,3 @@ public interface IOffreService {
 
 	void delete(Long id);
 }
-
-

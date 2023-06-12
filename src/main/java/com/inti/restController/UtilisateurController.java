@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.inti.entities.Utilisateur;
 import com.inti.services.interfaces.IUtilisateurService;
 
-@RestController // RestFul ws
+@RestController
 @CrossOrigin
 public class UtilisateurController {
 	@Autowired
@@ -25,20 +25,16 @@ public class UtilisateurController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
-	// @RequestMapping(value = "utilisateurs", method = RequestMethod.GET)
 	@GetMapping("/utilisateurs")
 	public List<Utilisateur> findAll() {
 		return utilisateurService.findAll();
 	}
 
-	// @RequestMapping(value = "utilisateurs/{idUtilisateur}", method =
-	// RequestMethod.GET)
 	@GetMapping("/utilisateurs/{idUtilisateur}")
 	public Utilisateur findOne(@PathVariable("idUtilisateur") Long id) {
 		return utilisateurService.findOne(id);
 	}
 
-	// @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
 	@PostMapping("/utilisateurs")
 	public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) {
 		Utilisateur currentUtilisateur = new Utilisateur();
@@ -50,23 +46,18 @@ public class UtilisateurController {
 		return utilisateurService.save(currentUtilisateur);
 	}
 
-	// @RequestMapping(value = "utilisateurs/{idUtilisateur}", method =
-	// RequestMethod.DELETE)
 	@DeleteMapping("/utilisateurs/{idUtilisateur}")
 	public void deleteUtilisateur(@PathVariable("idUtilisateur") Long id) {
 		utilisateurService.delete(id);
 	}
 
-	// @RequestMapping(value = "utilisateurs/{idUtilisateur}", method =
-	// RequestMethod.PUT)
 	@PutMapping("/utilisateurs/{idUtilisateur}")
 	public Utilisateur updateUtilisateur(@PathVariable("idUtilisateur") Long id, @RequestBody Utilisateur utilisateur) {
 		Utilisateur currentUtilisateur = utilisateurService.findOne(id);
 		currentUtilisateur.setNom(utilisateur.getNom());
 		currentUtilisateur.setPrenom(utilisateur.getPrenom());
 		currentUtilisateur.setUsername(utilisateur.getUsername());
-		currentUtilisateur.setPassword(utilisateur.getPassword());
-
+		currentUtilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
 		return utilisateurService.save(currentUtilisateur);
 	}
 

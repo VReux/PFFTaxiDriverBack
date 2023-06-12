@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "OFFRES", schema = "taxi_driver_db")
 public class Offre implements Serializable {
@@ -20,30 +22,29 @@ public class Offre implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_Utilisateur")
+	@JsonIgnore
 	private Utilisateur utilisateur;
 
 	@ManyToOne
 	@JoinColumn(name = "id_Reservation")
+	@JsonIgnore
 	private Reservation reservation;
 
-	
-	
-	//constructeurs
+	// constructeurs
 	public Offre() {
 	}
 
 	public Offre(String codePromo) {
 		this.codePromo = codePromo;
 	}
-	
-	
+
 	public Offre(String codePromo, Utilisateur utilisateur, Reservation reservation) {
 		this.codePromo = codePromo;
 		this.utilisateur = utilisateur;
 		this.reservation = reservation;
 	}
 
-	//getters/setters
+	// getters/setters
 	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
@@ -59,8 +60,6 @@ public class Offre implements Serializable {
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
-
-	
 
 	public Long getIdOffre() {
 		return idOffre;
