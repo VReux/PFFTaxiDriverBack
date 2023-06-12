@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,7 @@ import javax.persistence.JoinColumn;
 @Table(name = "UTILISATEURS", schema = "taxi_driver_db")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 	// attributs
 
 	@Id

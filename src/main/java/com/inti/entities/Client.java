@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("Client")
-public class Client extends Utilisateur{
+public class Client extends Utilisateur implements Serializable {
 
 		private String email;
 
