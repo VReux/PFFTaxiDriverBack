@@ -2,6 +2,8 @@ package com.inti.services.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,7 @@ import com.inti.repositories.RoleRepository;
 import com.inti.services.interfaces.IRoleService;
 
 @Service
-@org.springframework.transaction.annotation.Transactional
+@Transactional
 public class RoleService implements IRoleService {
 	@Autowired
 	RoleRepository roleRepository;

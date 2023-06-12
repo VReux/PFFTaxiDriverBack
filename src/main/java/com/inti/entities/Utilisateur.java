@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -45,7 +46,7 @@ public class Utilisateur {
 	private String password;
 
 	// relations
-	@OneToMany(mappedBy = "utilisateur")
+	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.REMOVE)
 	private List<Offre> offres = new ArrayList<>();
 
 
