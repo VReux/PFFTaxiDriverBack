@@ -9,4 +9,5 @@ import com.inti.entities.Utilisateur;
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 
+	Utilisateur findByUsername(String username);
 }

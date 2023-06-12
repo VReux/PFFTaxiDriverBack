@@ -3,6 +3,7 @@ package com.inti.restController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,31 +22,43 @@ public class UtilisateurController {
 	@Autowired
 	IUtilisateurService utilisateurService;
 
-	//@RequestMapping(value = "utilisateurs", method = RequestMethod.GET)
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
+	// @RequestMapping(value = "utilisateurs", method = RequestMethod.GET)
 	@GetMapping("/utilisateurs")
 	public List<Utilisateur> findAll() {
 		return utilisateurService.findAll();
 	}
 
-	//@RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.GET)
+	// @RequestMapping(value = "utilisateurs/{idUtilisateur}", method =
+	// RequestMethod.GET)
 	@GetMapping("/utilisateurs/{idUtilisateur}")
 	public Utilisateur findOne(@PathVariable("idUtilisateur") Long id) {
 		return utilisateurService.findOne(id);
 	}
 
-	//@RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
+	// @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
 	@PostMapping("/utilisateurs")
 	public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) {
-		return utilisateurService.save(utilisateur);
+		Utilisateur currentUtilisateur = new Utilisateur();
+		currentUtilisateur.setNom(utilisateur.getNom());
+		currentUtilisateur.setPrenom(utilisateur.getPrenom());
+		currentUtilisateur.setUsername(utilisateur.getUsername());
+		currentUtilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+		currentUtilisateur.setRoles(utilisateur.getRoles());
+		return utilisateurService.save(currentUtilisateur);
 	}
 
-	//@RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.DELETE)
+	// @RequestMapping(value = "utilisateurs/{idUtilisateur}", method =
+	// RequestMethod.DELETE)
 	@DeleteMapping("/utilisateurs/{idUtilisateur}")
 	public void deleteUtilisateur(@PathVariable("idUtilisateur") Long id) {
 		utilisateurService.delete(id);
 	}
 
-	//@RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.PUT)
+	// @RequestMapping(value = "utilisateurs/{idUtilisateur}", method =
+	// RequestMethod.PUT)
 	@PutMapping("/utilisateurs/{idUtilisateur}")
 	public Utilisateur updateUtilisateur(@PathVariable("idUtilisateur") Long id, @RequestBody Utilisateur utilisateur) {
 		Utilisateur currentUtilisateur = utilisateurService.findOne(id);
