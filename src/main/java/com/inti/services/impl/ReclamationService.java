@@ -34,7 +34,7 @@ public class ReclamationService implements IReclamationService {
 
 	@Override
 	public void delete(Long idReclamation) {
-
+		reclamationRepository.deleteById(idReclamation);
 	}
 
 }
