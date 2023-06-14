@@ -33,7 +33,7 @@ public class Course implements Serializable {
 	private float noteChauffeur;
 	private float tempsCourse;
 	private float prixReel;
-
+	
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseDepart_codePostal")),
