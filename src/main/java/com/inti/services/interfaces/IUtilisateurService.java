@@ -16,4 +16,9 @@ public interface IUtilisateurService {
 	void delete(Long id);
 
 	Utilisateur findByUsername(String username);
+	
+	// Etape 2 : (recherche)
+	
+	List<Utilisateur> findByNom(String nom);
+
 }

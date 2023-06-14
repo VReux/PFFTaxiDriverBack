@@ -43,5 +43,13 @@ public class UtilisateurService implements IUtilisateurService {
 	public Utilisateur findByUsername(String username) {
 		return utilisateurRepository.findByUsername(username);
 	}
+	// Etape 3 :
+	@Override
+	public List<Utilisateur> findByNom(String nom) {
+		// TODO Auto-generated method stub
+		return utilisateurRepository.findByNom(nom);
+	}
+	
+
 
 }
