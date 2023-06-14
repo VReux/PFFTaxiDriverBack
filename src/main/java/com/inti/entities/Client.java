@@ -17,6 +17,7 @@ public class Client extends Utilisateur implements Serializable {
 
 	private String email;
 
+	
 	// Associations
 	@OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
 	private List<Reclamation> reclamations = new ArrayList<>();
