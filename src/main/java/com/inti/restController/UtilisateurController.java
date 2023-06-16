@@ -34,12 +34,6 @@ public class UtilisateurController {
 	public Utilisateur findOne(@PathVariable("idUtilisateur") Long id) {
 		return utilisateurService.findOne(id);
 	}
-	
-	// Etape 4 : (recherche)
-	@GetMapping("/utilisateurs/test/{nom}")
-	public List<Utilisateur> findByNom(@PathVariable("nom") String nom) {
-		return utilisateurService.findByNom(nom);
-	}
 
 	@PostMapping("/utilisateurs")
 	public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) {

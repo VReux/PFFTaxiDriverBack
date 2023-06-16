@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,15 +28,22 @@ public class Taxi implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_agence")
-	@JsonIgnore
 	private Agence agence;
 
-	@OneToOne(mappedBy = "taxi", cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "taxi")
 	@JsonIgnore
+//	@Transient
 	private Chauffeur chauffeur;
 
 	// constructeurs
 	public Taxi() {
+	}
+
+	public Taxi(Long idTaxi, String immatriculation, String marque, String modele, Agence agence) {
+		this.idTaxi = idTaxi;
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.modele = modele;
 	}
 
 	public Taxi(String immatriculation, String marque, String modele) {

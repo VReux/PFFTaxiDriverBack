@@ -24,9 +24,11 @@ public class Agence implements Serializable {
 	private String nomAgence;
 
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private List<Chauffeur> chauffeurs = new ArrayList<>();
 
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private List<Taxi> taxis = new ArrayList<>();
 
 	// Constructeurs

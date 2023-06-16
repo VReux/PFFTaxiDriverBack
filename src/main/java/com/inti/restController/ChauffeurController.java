@@ -48,6 +48,8 @@ public class ChauffeurController {
 		currentChauffeur.setPassword(passwordEncoder.encode(chauffeur.getPassword()));
 		currentChauffeur.setRoles(chauffeur.getRoles());
 		currentChauffeur.setNumPermis(chauffeur.getNumPermis());
+		currentChauffeur.setTaxi(chauffeur.getTaxi());
+		currentChauffeur.setAgence(chauffeur.getAgence());
 		return chauffeurService.save(currentChauffeur);
 	}
 
