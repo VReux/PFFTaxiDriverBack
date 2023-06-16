@@ -30,6 +30,11 @@ public class UtilisateurController {
 		return utilisateurService.findAll();
 	}
 
+	@GetMapping("/utilisateurs/test/{nom}")
+	public List<Utilisateur> findByNom(@PathVariable("nom") String nom) {
+		return utilisateurService.findByNom(nom);
+	}
+	
 	@GetMapping("/utilisateurs/{idUtilisateur}")
 	public Utilisateur findOne(@PathVariable("idUtilisateur") Long id) {
 		return utilisateurService.findOne(id);

@@ -32,7 +32,6 @@ public class Taxi implements Serializable {
 
 	@OneToOne(mappedBy = "taxi")
 	@JsonIgnore
-//	@Transient
 	private Chauffeur chauffeur;
 
 	// constructeurs

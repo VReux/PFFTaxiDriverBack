@@ -45,6 +45,7 @@ public class OffreController {
 	public Offre updateOffre(@PathVariable("idOffre") Long id, @RequestBody Offre offre) {
 		Offre currentOffre = offreService.findOne(id);
 		currentOffre.setCodePromo(offre.getCodePromo());
+		currentOffre.setDescriptionOffre(offre.getDescriptionOffre());
 		return offreService.save(currentOffre);
 	}
 
