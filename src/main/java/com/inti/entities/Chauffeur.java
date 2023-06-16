@@ -31,12 +31,11 @@ public class Chauffeur extends Utilisateur implements Serializable {
 	// Associations
 
 	@OneToOne
-	@JoinColumn(name = "id_taxi")
+	@JoinColumn(name = "Taxi")
 	private Taxi taxi;
 
 	@ManyToOne
 	@JoinColumn(name = "Agence")
-	@JsonIgnore
 	private Agence agence;
 
 	@OneToMany(mappedBy = "chauffeur", cascade = CascadeType.REMOVE)
@@ -58,6 +57,12 @@ public class Chauffeur extends Utilisateur implements Serializable {
 		this.numPermis = numPermis;
 		this.taxi = taxi;
 		this.agence = agence;
+	}
+
+	public Chauffeur(String numPermis, Taxi taxi) {
+		super();
+		this.numPermis = numPermis;
+		this.taxi = taxi;
 	}
 
 	// getters/setters
