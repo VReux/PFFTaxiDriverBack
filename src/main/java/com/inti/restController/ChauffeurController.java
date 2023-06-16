@@ -67,6 +67,8 @@ public class ChauffeurController {
 		currentChauffeur.setPassword(passwordEncoder.encode(chauffeur.getPassword()));
 		currentChauffeur.setNumPermis(chauffeur.getNumPermis());
 		currentChauffeur.setRoles(chauffeur.getRoles());
+		currentChauffeur.setTaxi(chauffeur.getTaxi());
+		currentChauffeur.setAgence(chauffeur.getAgence());
 		return chauffeurService.save(currentChauffeur);
 	}
 }

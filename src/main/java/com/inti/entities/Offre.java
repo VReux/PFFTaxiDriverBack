@@ -19,6 +19,16 @@ public class Offre implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idOffre;
 	private String codePromo;
+	private String descriptionOffre;
+	
+	
+	public String getDescriptionOffre() {
+		return descriptionOffre;
+	}
+
+	public void setDescriptionOffre(String descriptionOffre) {
+		this.descriptionOffre = descriptionOffre;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "id_Utilisateur")
@@ -38,10 +48,11 @@ public class Offre implements Serializable {
 		this.codePromo = codePromo;
 	}
 
-	public Offre(String codePromo, Utilisateur utilisateur, Reservation reservation) {
+	public Offre(String codePromo, String descriptionOffre, Utilisateur utilisateur, Reservation reservation) {
 		this.codePromo = codePromo;
 		this.utilisateur = utilisateur;
 		this.reservation = reservation;
+		this.descriptionOffre = descriptionOffre;
 	}
 
 	// getters/setters
