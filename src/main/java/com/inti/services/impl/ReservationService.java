@@ -1,5 +1,6 @@
 package com.inti.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class ReservationService implements IReservationService {
 	public void delete(Long id) {
 		reservationRepository.deleteById(id);
 
+	}
+
+	@Override
+	public List<Reservation> findByHeureDepart(Date heureDepart) {
+		return reservationRepository.findByHeureDepart(heureDepart);
 	}
 
 }

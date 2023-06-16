@@ -11,5 +11,5 @@ import com.inti.entities.Reservation;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-	Reservation findByHeureDepart(Date heureDepart);
+	List<Reservation> findByHeureDepart(Date heureDepart);
 }

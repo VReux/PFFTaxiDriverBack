@@ -33,6 +33,7 @@ public class Course implements Serializable {
 	private float noteChauffeur;
 	private float tempsCourse;
 	private float prixReel;
+	private boolean varValider;
 	
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
@@ -92,6 +93,25 @@ public class Course implements Serializable {
 		this.prixReel = prixReel;
 		this.adresseDepart = adresseDepart;
 		this.adresseArrivee = adresseArrivee;
+		this.reservation = reservation;
+		this.chauffeur = chauffeur;
+	}
+	
+	
+
+	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel,
+			boolean varValider, Adresse adresseDepart, Adresse adresseArrivee, Facture facture, Reservation reservation,
+			Chauffeur chauffeur) {
+		super();
+		this.avisCourse = avisCourse;
+		this.noteCourse = noteCourse;
+		this.noteChauffeur = noteChauffeur;
+		this.tempsCourse = tempsCourse;
+		this.prixReel = prixReel;
+		this.varValider = varValider;
+		this.adresseDepart = adresseDepart;
+		this.adresseArrivee = adresseArrivee;
+		this.facture = facture;
 		this.reservation = reservation;
 		this.chauffeur = chauffeur;
 	}
@@ -187,6 +207,14 @@ public class Course implements Serializable {
 
 	public void setAdresseArrivee(Adresse adresseArrivee) {
 		this.adresseArrivee = adresseArrivee;
+	}
+	
+	public boolean isVarValider() {
+		return varValider;
+	}
+
+	public void setVarValider(boolean varValider) {
+		this.varValider = varValider;
 	}
 
 	@Override
