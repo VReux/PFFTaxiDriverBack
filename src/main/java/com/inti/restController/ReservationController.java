@@ -1,5 +1,6 @@
 package com.inti.restController;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class ReservationController {
 	@GetMapping("/reservations/{idReservation}")
 	public Reservation findOne(@PathVariable("idReservation") Long id) {
 		return reservationService.findOne(id);
+	}
+	
+	@GetMapping("/reservations/search/{heureDepart}")
+	public List<Reservation> findByHeureDepart(@PathVariable("heureDepart") Date heureDepart) {
+		return reservationService.findByHeureDepart(heureDepart);
 	}
 
 	@PostMapping("/reservations")

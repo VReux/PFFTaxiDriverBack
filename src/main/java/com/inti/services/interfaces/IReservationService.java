@@ -1,5 +1,6 @@
 package com.inti.services.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import com.inti.entities.Reservation;
@@ -12,4 +13,6 @@ public interface IReservationService {
 	Reservation save(Reservation reservation);
 
 	void delete(Long id);
+	
+	List<Reservation> findByHeureDepart(Date heureDepart);
 }

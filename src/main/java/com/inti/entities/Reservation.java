@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Column;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,6 +30,7 @@ public class Reservation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReservation;
+	@Temporal(TemporalType.DATE)
 	private Date heureDepart;
 	private float tauxHoraire;
 	private boolean validation;
