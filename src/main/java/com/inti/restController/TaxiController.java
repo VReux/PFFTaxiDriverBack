@@ -47,6 +47,7 @@ public class TaxiController {
 		currentTaxi.setImmatriculation(taxi.getImmatriculation());
 		currentTaxi.setMarque(taxi.getMarque());
 		currentTaxi.setModele(taxi.getModele());
+		currentTaxi.setAgence(taxi.getAgence());
 		return taxiService.save(currentTaxi);
 	}
 
