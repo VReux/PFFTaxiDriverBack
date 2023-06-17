@@ -52,9 +52,10 @@ public class ReservationController {
 		Reservation currentReservation = reservationService.findOne(id);
 		currentReservation.setHeureDepart(reservation.getHeureDepart());
 		currentReservation.setTauxHoraire(reservation.getTauxHoraire());
-		currentReservation.setAdresseDepart(reservation.getAdresseDepart());
-		currentReservation.setAdresseArrivee(reservation.getAdresseArrivee());
+		currentReservation.setDepart(reservation.getDepart());
+		currentReservation.setArrivee(reservation.getArrivee());
 		currentReservation.setValidation(reservation.getValidation());
+		currentReservation.setDistancekm(reservation.getDistancekm());
 		return reservationService.save(currentReservation);
 	}
 

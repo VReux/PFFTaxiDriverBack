@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.inti.model.Adresse;
 
 @Embeddable
 @Entity
@@ -34,8 +33,11 @@ public class Course implements Serializable {
 	private float tempsCourse;
 	private float prixReel;
 	private boolean varValider;
+	private String depart;
+	private String arrivee;
+	private float distancekm;
 	
-	@Embedded
+	/*@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseDepart_codePostal")),
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseDepart_ville")) })
@@ -45,7 +47,7 @@ public class Course implements Serializable {
 	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseArrivee_rue")),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseArrivee_codePostal")),
 			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
-	private Adresse adresseArrivee;
+	private Adresse adresseArrivee;*/
 
 	// Associations
 	@OneToOne(mappedBy = "course", cascade = CascadeType.REMOVE)
@@ -66,41 +68,23 @@ public class Course implements Serializable {
 
 	}
 
-	public Course(float tempsCourse, float prixReel, Adresse adresseDepart, Adresse adresseArrivee) {
+	public Course(float tempsCourse, float prixReel) {
 		this.tempsCourse = tempsCourse;
 		this.prixReel = prixReel;
-		this.adresseDepart = adresseDepart;
-		this.adresseArrivee = adresseArrivee;
+
 	}
 
-	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel,
-			Adresse adresseDepart, Adresse adresseArrivee) {
+	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel) {
 		this.avisCourse = avisCourse;
 		this.noteCourse = noteCourse;
 		this.noteChauffeur = noteChauffeur;
 		this.tempsCourse = tempsCourse;
 		this.prixReel = prixReel;
-		this.adresseDepart = adresseDepart;
-		this.adresseArrivee = adresseArrivee;
-	}
+
+	}	
 
 	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel,
-			Adresse adresseDepart, Adresse adresseArrivee, Reservation reservation, Chauffeur chauffeur) {
-		this.avisCourse = avisCourse;
-		this.noteCourse = noteCourse;
-		this.noteChauffeur = noteChauffeur;
-		this.tempsCourse = tempsCourse;
-		this.prixReel = prixReel;
-		this.adresseDepart = adresseDepart;
-		this.adresseArrivee = adresseArrivee;
-		this.reservation = reservation;
-		this.chauffeur = chauffeur;
-	}
-	
-	
-
-	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel,
-			boolean varValider, Adresse adresseDepart, Adresse adresseArrivee, Facture facture, Reservation reservation,
+			boolean varValider, String depart, String arrivee, Facture facture, Reservation reservation,
 			Chauffeur chauffeur) {
 		super();
 		this.avisCourse = avisCourse;
@@ -109,8 +93,8 @@ public class Course implements Serializable {
 		this.tempsCourse = tempsCourse;
 		this.prixReel = prixReel;
 		this.varValider = varValider;
-		this.adresseDepart = adresseDepart;
-		this.adresseArrivee = adresseArrivee;
+		this.depart = depart;
+		this.arrivee = arrivee;
 		this.facture = facture;
 		this.reservation = reservation;
 		this.chauffeur = chauffeur;
@@ -192,22 +176,6 @@ public class Course implements Serializable {
 	public void setPrixReel(float prixReel) {
 		this.prixReel = prixReel;
 	}
-
-	public Adresse getAdresseDepart() {
-		return adresseDepart;
-	}
-
-	public void setAdresseDepart(Adresse adresseDepart) {
-		this.adresseDepart = adresseDepart;
-	}
-
-	public Adresse getAdresseArrivee() {
-		return adresseArrivee;
-	}
-
-	public void setAdresseArrivee(Adresse adresseArrivee) {
-		this.adresseArrivee = adresseArrivee;
-	}
 	
 	public boolean isVarValider() {
 		return varValider;
@@ -217,11 +185,38 @@ public class Course implements Serializable {
 		this.varValider = varValider;
 	}
 
+	public String getDepart() {
+		return depart;
+	}
+
+	public void setDepart(String depart) {
+		this.depart = depart;
+	}
+
+	public String getArrivee() {
+		return arrivee;
+	}
+
+	public void setArrivee(String arrivee) {
+		this.arrivee = arrivee;
+	}
+
+	public float getDistancekm() {
+		return distancekm;
+	}
+
+	public void setDistancekm(float distancekm) {
+		this.distancekm = distancekm;
+	}
+
 	@Override
 	public String toString() {
 		return "Course [avisCourse=" + avisCourse + ", noteCourse=" + noteCourse + ", noteChauffeur=" + noteChauffeur
-				+ ", tempsCourse=" + tempsCourse + ", prixReel=" + prixReel + ", adresseDepart=" + adresseDepart
-				+ ", adresseArrivee=" + adresseArrivee + "]";
+				+ ", tempsCourse=" + tempsCourse + ", prixReel=" + prixReel + ", varValider=" + varValider + ", depart="
+				+ depart + ", arrivee=" + arrivee + ", facture=" + facture + ", reservation=" + reservation
+				+ ", chauffeur=" + chauffeur + "]";
 	}
+
+
 
 }
