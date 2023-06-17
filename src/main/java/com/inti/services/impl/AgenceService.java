@@ -38,4 +38,12 @@ public class AgenceService implements IAgenceService {
 
 	}
 
+	@Override
+	public Agence findByNomAgence(String nomAgence) {
+		// TODO Auto-generated method stub
+		return agenceRepository.findByNomAgence(nomAgence);
+	}
+
+
+
 }

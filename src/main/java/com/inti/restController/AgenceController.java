@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Agence;
+import com.inti.entities.Utilisateur;
 import com.inti.services.interfaces.IAgenceService;
 
 @RestController
@@ -30,7 +31,12 @@ public class AgenceController {
 	public Agence findOne(@PathVariable("idAgence") Long id) {
 		return agenceService.findOne(id);
 	}
-
+	
+	@GetMapping("/agences/search/{nomAgence}")
+	public Agence findByNom(@PathVariable("nomAgence") String nomAgence) {
+		return agenceService.findByNomAgence(nomAgence);
+	}
+	
 	@PostMapping("/agences")
 	public Agence saveAgence(@RequestBody Agence agence) {
 		return agenceService.save(agence);
