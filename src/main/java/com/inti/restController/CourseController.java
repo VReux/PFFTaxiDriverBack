@@ -51,8 +51,9 @@ public class CourseController {
 		currentCourse.setNoteChauffeur(course.getNoteChauffeur());
 		currentCourse.setTempsCourse(course.getTempsCourse());
 		currentCourse.setPrixReel(course.getPrixReel());
-		currentCourse.setAdresseDepart(course.getAdresseDepart());
-		currentCourse.setAdresseArrivee(course.getAdresseArrivee());
+		currentCourse.setDepart(course.getDepart());
+		currentCourse.setArrivee(course.getArrivee());
+		currentCourse.setDistancekm(course.getDistancekm());
 		return courseService.save(currentCourse);
 	}
 

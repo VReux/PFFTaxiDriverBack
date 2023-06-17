@@ -22,7 +22,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Column;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.inti.model.Adresse;
 
 @Entity
 @Table(name = "RESERVATIONS", schema = "taxi_driver_db")
@@ -34,18 +33,9 @@ public class Reservation implements Serializable {
 	private Date heureDepart;
 	private float tauxHoraire;
 	private boolean validation;
-
-	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseDepart_rue")),
-			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseDepart_codePostal")),
-			@AttributeOverride(name = "ville", column = @Column(name = "adresseDepart_ville")) })
-	private Adresse adresseDepart;
-
-	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "rue", column = @Column(name = "adresseArrivee_rue")),
-			@AttributeOverride(name = "codePostal", column = @Column(name = "adresseArrivee_codePostal")),
-			@AttributeOverride(name = "ville", column = @Column(name = "adresseArrivee_ville")) })
-	private Adresse adresseArrivee;
+	private String depart;
+	private String arrivee;
+	private float distancekm;
 
 	@OneToMany(mappedBy = "reservation")
 	private List<Offre> offres = new ArrayList<>();
@@ -69,13 +59,15 @@ public class Reservation implements Serializable {
 		this.validation = validation;
 	}
 
-	public Reservation(Date heureDepart, float tauxHoraire, boolean validation, Adresse adresseDepart,
-			Adresse adresseArrivee, Course course, Client client) {
+	public Reservation(Date heureDepart, float tauxHoraire, boolean validation, String depart, String arrivee,
+			List<Offre> offres, Course course, Client client) {
+		super();
 		this.heureDepart = heureDepart;
 		this.tauxHoraire = tauxHoraire;
 		this.validation = validation;
-		this.adresseDepart = adresseDepart;
-		this.adresseArrivee = adresseArrivee;
+		this.depart = depart;
+		this.arrivee = arrivee;
+		this.offres = offres;
 		this.course = course;
 		this.client = client;
 	}
@@ -129,20 +121,20 @@ public class Reservation implements Serializable {
 		this.tauxHoraire = tauxHoraire;
 	}
 
-	public Adresse getAdresseDepart() {
-		return adresseDepart;
+	public String getDepart() {
+		return depart;
 	}
 
-	public void setAdresseDepart(Adresse adresseDepart) {
-		this.adresseDepart = adresseDepart;
+	public void setDepart(String depart) {
+		this.depart = depart;
 	}
 
-	public Adresse getAdresseArrivee() {
-		return adresseArrivee;
+	public String getArrivee() {
+		return arrivee;
 	}
 
-	public void setAdresseArrivee(Adresse adresseArrivee) {
-		this.adresseArrivee = adresseArrivee;
+	public void setArrivee(String arrivee) {
+		this.arrivee = arrivee;
 	}
 
 	public boolean isValidation() {
@@ -155,6 +147,14 @@ public class Reservation implements Serializable {
 
 	public void setValidation(boolean validation) {
 		this.validation = validation;
+	}
+
+	public float getDistancekm() {
+		return distancekm;
+	}
+
+	public void setDistancekm(float distancekm) {
+		this.distancekm = distancekm;
 	}
 
 	@Override
