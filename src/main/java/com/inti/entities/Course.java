@@ -32,7 +32,7 @@ public class Course implements Serializable {
 	private float noteChauffeur;
 	private float tempsCourse;
 	private float prixReel;
-	private boolean varValider;
+	private boolean validation;
 	private String depart;
 	private String arrivee;
 	private float distancekm;
@@ -84,7 +84,7 @@ public class Course implements Serializable {
 	}	
 
 	public Course(String avisCourse, float noteCourse, float noteChauffeur, float tempsCourse, float prixReel,
-			boolean varValider, String depart, String arrivee, Facture facture, Reservation reservation,
+			boolean validation, String depart, String arrivee, Facture facture, Reservation reservation,
 			Chauffeur chauffeur) {
 		super();
 		this.avisCourse = avisCourse;
@@ -92,7 +92,7 @@ public class Course implements Serializable {
 		this.noteChauffeur = noteChauffeur;
 		this.tempsCourse = tempsCourse;
 		this.prixReel = prixReel;
-		this.varValider = varValider;
+		this.validation = validation;
 		this.depart = depart;
 		this.arrivee = arrivee;
 		this.facture = facture;
@@ -177,12 +177,12 @@ public class Course implements Serializable {
 		this.prixReel = prixReel;
 	}
 	
-	public boolean isVarValider() {
-		return varValider;
+	public boolean isValidation() {
+		return validation;
 	}
 
-	public void setVarValider(boolean varValider) {
-		this.varValider = varValider;
+	public void setValidation(boolean validation) {
+		this.validation = validation;
 	}
 
 	public String getDepart() {
@@ -212,7 +212,7 @@ public class Course implements Serializable {
 	@Override
 	public String toString() {
 		return "Course [avisCourse=" + avisCourse + ", noteCourse=" + noteCourse + ", noteChauffeur=" + noteChauffeur
-				+ ", tempsCourse=" + tempsCourse + ", prixReel=" + prixReel + ", varValider=" + varValider + ", depart="
+				+ ", tempsCourse=" + tempsCourse + ", prixReel=" + prixReel + ", validation=" + validation + ", depart="
 				+ depart + ", arrivee=" + arrivee + ", facture=" + facture + ", reservation=" + reservation
 				+ ", chauffeur=" + chauffeur + "]";
 	}

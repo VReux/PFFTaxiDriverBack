@@ -13,5 +13,7 @@ public interface ICourseService {
 	Course save(Course course);
 
 	void delete(Long idCourse);
+	
+	List<Course> findByValidation(boolean validation);
 
 }

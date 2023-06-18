@@ -37,4 +37,9 @@ public class CourseService implements ICourseService {
 		courseRepository.deleteById(idCourse);
 	}
 
+	@Override
+	public List<Course> findByValidation(boolean validation) {
+		return courseRepository.findByValidation(validation);
+	}
+
 }

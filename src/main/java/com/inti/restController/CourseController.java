@@ -31,6 +31,12 @@ public class CourseController {
 	public Course findOne(@PathVariable("idCourse") Long idCourse) {
 		return courseService.findOne(idCourse);
 	}
+	
+	@GetMapping("/courses/validation/{validation}")
+	   public List<Course> findByValidation(@PathVariable("validation") boolean validation) {
+	       return courseService.findByValidation(validation);
+	   }
+
 
 	@PostMapping("courses")
 	public Course saveCourse(@RequestBody Course course) {
@@ -54,6 +60,7 @@ public class CourseController {
 		currentCourse.setDepart(course.getDepart());
 		currentCourse.setArrivee(course.getArrivee());
 		currentCourse.setDistancekm(course.getDistancekm());
+		currentCourse.setValidation(course.isValidation());
 		return courseService.save(currentCourse);
 	}
 
