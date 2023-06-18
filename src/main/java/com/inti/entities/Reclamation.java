@@ -23,7 +23,7 @@ public class Reclamation implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_client")
-	@JsonIgnore
+	
 	private Client client;
 
 	// constructeurs

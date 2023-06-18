@@ -46,6 +46,7 @@ public class OffreController {
 		Offre currentOffre = offreService.findOne(id);
 		currentOffre.setCodePromo(offre.getCodePromo());
 		currentOffre.setDescriptionOffre(offre.getDescriptionOffre());
+		currentOffre.setRemiseOffre(offre.getRemiseOffre());
 		return offreService.save(currentOffre);
 	}
 

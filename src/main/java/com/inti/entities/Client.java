@@ -20,6 +20,7 @@ public class Client extends Utilisateur implements Serializable {
 	
 	// Associations
 	@OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private List<Reclamation> reclamations = new ArrayList<>();
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)

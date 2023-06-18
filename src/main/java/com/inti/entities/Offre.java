@@ -20,8 +20,16 @@ public class Offre implements Serializable {
 	private Long idOffre;
 	private String codePromo;
 	private String descriptionOffre;
+	private float remiseOffre;
 	
-	
+	public float getRemiseOffre() {
+		return remiseOffre;
+	}
+
+	public void setRemiseOffre(float remiseOffre) {
+		this.remiseOffre = remiseOffre;
+	}
+
 	public String getDescriptionOffre() {
 		return descriptionOffre;
 	}
@@ -48,11 +56,12 @@ public class Offre implements Serializable {
 		this.codePromo = codePromo;
 	}
 
-	public Offre(String codePromo, String descriptionOffre, Utilisateur utilisateur, Reservation reservation) {
+	public Offre(String codePromo, String descriptionOffre, Utilisateur utilisateur, Reservation reservation,float remiseOffre) {
 		this.codePromo = codePromo;
 		this.utilisateur = utilisateur;
 		this.reservation = reservation;
 		this.descriptionOffre = descriptionOffre;
+		this.remiseOffre = remiseOffre;
 	}
 
 	// getters/setters
