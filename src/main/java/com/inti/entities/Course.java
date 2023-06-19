@@ -59,7 +59,7 @@ public class Course implements Serializable {
 	private Reservation reservation;
 
 	@ManyToOne
-	@JoinColumn(name = "id_chauffeur")
+	@JoinColumn(name = "Chauffeur")
 	private Chauffeur chauffeur;
 
 	// constructeurs
