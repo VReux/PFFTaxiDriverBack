@@ -51,6 +51,7 @@ public class AgenceController {
 	public Agence updateAgence(@PathVariable("idAgence") Long id, @RequestBody Agence agence) {
 		Agence currentAgence = agenceService.findOne(id);
 		currentAgence.setNomAgence(agence.getNomAgence());
+		currentAgence.setAdresseAgence(agence.getAdresseAgence());
 		return agenceService.save(currentAgence);
 	}
 }
