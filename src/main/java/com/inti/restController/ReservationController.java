@@ -56,6 +56,8 @@ public class ReservationController {
 		currentReservation.setArrivee(reservation.getArrivee());
 		currentReservation.setValidation(reservation.getValidation());
 		currentReservation.setDistancekm(reservation.getDistancekm());
+		currentReservation.setPrixEstime(reservation.getPrixEstime());
+		currentReservation.setTempsCourse(reservation.getTempsCourse());
 		return reservationService.save(currentReservation);
 	}
 

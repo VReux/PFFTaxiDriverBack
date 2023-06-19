@@ -36,6 +36,8 @@ public class Reservation implements Serializable {
 	private String depart;
 	private String arrivee;
 	private float distancekm;
+	private float tempsCourse;
+	private float prixEstime;
 
 	@OneToMany(mappedBy = "reservation")
 	private List<Offre> offres = new ArrayList<>();
@@ -67,6 +69,23 @@ public class Reservation implements Serializable {
 		this.validation = validation;
 		this.depart = depart;
 		this.arrivee = arrivee;
+		this.offres = offres;
+		this.course = course;
+		this.client = client;
+	}
+
+	public Reservation(Long idReservation, Date heureDepart, float tauxHoraire, boolean validation, String depart,
+			String arrivee, float distancekm, float tempsCourse, float prixEstime, List<Offre> offres, Course course,
+			Client client) {
+		this.idReservation = idReservation;
+		this.heureDepart = heureDepart;
+		this.tauxHoraire = tauxHoraire;
+		this.validation = validation;
+		this.depart = depart;
+		this.arrivee = arrivee;
+		this.distancekm = distancekm;
+		this.tempsCourse = tempsCourse;
+		this.prixEstime = prixEstime;
 		this.offres = offres;
 		this.course = course;
 		this.client = client;
@@ -155,6 +174,22 @@ public class Reservation implements Serializable {
 
 	public void setDistancekm(float distancekm) {
 		this.distancekm = distancekm;
+	}
+
+	public float getTempsCourse() {
+		return tempsCourse;
+	}
+
+	public void setTempsCourse(float tempsCourse) {
+		this.tempsCourse = tempsCourse;
+	}
+
+	public float getPrixEstime() {
+		return prixEstime;
+	}
+
+	public void setPrixEstime(float prixEstime) {
+		this.prixEstime = prixEstime;
 	}
 
 	@Override
