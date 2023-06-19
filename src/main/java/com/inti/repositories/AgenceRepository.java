@@ -13,4 +13,5 @@ public interface AgenceRepository extends JpaRepository<Agence, Long> {
 
 	
 	Agence findByNomAgence(String nomAgence);
+	
 }
