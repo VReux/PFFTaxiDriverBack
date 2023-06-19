@@ -57,6 +57,13 @@ public class Facture implements Serializable {
 		this.course = course;
 	}
 
+	public Facture(float prixReelHT, float prixReelTTC, float tva) {
+		super();
+		this.prixReelHT = prixReelHT;
+		this.prixReelTTC = prixReelTTC;
+		this.tva = tva;
+	}
+
 	// getters/setters
 	public Course getCourse() {
 		return course;
