@@ -61,6 +61,7 @@ public class CourseController {
 		currentCourse.setArrivee(course.getArrivee());
 		currentCourse.setDistancekm(course.getDistancekm());
 		currentCourse.setValidation(course.isValidation());
+		currentCourse.setChauffeur(course.getChauffeur());
 		return courseService.save(currentCourse);
 	}
 
