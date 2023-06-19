@@ -30,6 +30,13 @@ public class OffreController {
 	public Offre findOne(@PathVariable("idOffre") Long id) {
 		return offreService.findOne(id);
 	}
+	
+	
+	@GetMapping("/offres/search/{codePromo}")
+	public Offre findOne(@PathVariable("codePromo") String codePromo) {
+		return offreService.findByCodePromo(codePromo);
+	}
+	
 
 	@PostMapping("/offres")
 	public Offre saveOffre(@RequestBody Offre offre) {

@@ -37,4 +37,9 @@ public class OffreService implements IOffreService {
 		offreRepository.deleteById(id);
 	}
 
+	@Override
+	public Offre findByCodePromo(String codePromo) {
+		return offreRepository.findByCodePromo(codePromo);
+	}
+
 }
