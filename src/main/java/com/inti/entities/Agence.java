@@ -20,7 +20,7 @@ public class Agence implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAgence;
-
+	private String adresseAgence;
 	private String nomAgence;
 
 	@OneToMany(mappedBy = "agence", cascade = CascadeType.REMOVE)
@@ -36,6 +36,12 @@ public class Agence implements Serializable {
 	}
 
 	public Agence(String nomAgence) {
+		this.nomAgence = nomAgence;
+	}
+
+	public Agence(String adresseAgence, String nomAgence) {
+		super();
+		this.adresseAgence = adresseAgence;
 		this.nomAgence = nomAgence;
 	}
 
@@ -70,6 +76,14 @@ public class Agence implements Serializable {
 
 	public void setNomAgence(String nomAgence) {
 		this.nomAgence = nomAgence;
+	}
+
+	public String getAdresseAgence() {
+		return adresseAgence;
+	}
+
+	public void setAdresseAgence(String adresseAgence) {
+		this.adresseAgence = adresseAgence;
 	}
 
 	@Override
