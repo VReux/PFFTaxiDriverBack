@@ -14,4 +14,5 @@ public interface IAgenceService {
 	void delete(Long id);
 	
 	Agence findByNomAgence(String nomAgence);
+
 }
